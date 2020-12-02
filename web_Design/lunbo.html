@@ -1,0 +1,179 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/lunbo.css" rel="stylesheet"/>
+        <style>
+            *{ margin:0px; text-decoration:none;}
+            body{margin-top:0px;}
+            #container{width:600px; height:200px; position:relative;border:3px solid #333;overflow:hidden; margin:0 auto;}
+            #list{width:4200px; height:200px; position:absolute; z-index:1;}
+            #list img{float:left;;}
+            #buttons{position:absolute; height:10px; width:100px; z-index:2; bottom:20px; left:250px;}
+            #buttons span{cursor:pointer;/*假超链接样式*/ float:left; border:1px  solid #fff; width:10px;height:10px;border-radius:10px; background:#333; margin-right:5px;}
+            #buttons .on{background:orangered;}
+            .arrow{cursor:pointer; display:none; line-height:39px; text-align:center; font-size:36px; 
+                   font-weight:bold; width:40px; height:40px;  position:absolute; z-index:2; top:80px;
+                   background-color: RGBA(0,0,0,.3); color:#fff;}
+            .arrow:hover{background-color:RGBA(0,0,0,.7);}
+            #container:hover .arrow{display:block;}
+            #prev{left:20px;}
+            #next{right:20px;}
+        </style>
+    </head>
+    <body  >
+        <div id="container">
+
+            <div id="list" style="left:-600px;">
+
+                <img src="images/05.jpg" alt="5.pg" />
+
+                <img src="images/01.jpg" alt="5.pg" onclick="tiaozhuan(1)"/>
+
+                <img src="images/02.jpg" alt="5.pg" onclick="tiaozhuan(2)"/>
+
+                <img src="images/03.jpg" alt="5.pg" onclick="tiaozhuan(3)"/>
+
+                <img src="images/04.jpg" alt="5.pg" onclick="tiaozhuan(4)"/>
+
+                <img src="images/05.jpg" alt="5.pg" onclick="tiaozhuan(5)"/>
+
+                <img src="images/01.jpg" alt="5.pg" />
+
+            </div>
+
+            <div id="buttons">
+
+                <span index="1"class="on"></span>
+
+                <span index="2"></span>
+
+                <span index="3"></span>
+
+                <span index="4"></span>
+
+                <span index="5"></span>
+
+            </div>
+
+            <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+
+            <a href="javascript:;" class="arrow" id="next">&gt;</a>
+
+        </div>
+        <script type="text/javascript">
+            window.onload = function () {
+                var container = document.getElementById('container');
+                var list = document.getElementById('list');
+                var buttons = document.getElementById('buttons').getElementsByTagName('span');
+                var pre = document.getElementById('prev');
+                var next = document.getElementById('next');
+                var index = 1;
+                var animated = false;
+                var timer;
+                function showButton() {
+                    for (var i = 0; i < buttons.length; i++) {
+                        if (buttons[i].className == 'on') {
+                            buttons[i].className = '';
+                            break;
+                        }
+                    }
+                    buttons[index - 1].className = "on";
+                }
+                function animate(offset) {
+                    animated = true;
+                    var newleft = parseInt(list.style.left) + offset;
+                    var time = 300;//位移总时间
+                    var interval = 10;//位移间隔时间
+                    var speed = offset / (time / interval);//每一次的位移量
+                    function go() {
+                        if ((speed < 0 && parseInt(list.style.left) > newleft) || (speed > 0 && parseInt(list.style.left) < newleft)) {
+                            list.style.left = parseInt(list.style.left) + speed + 'px';
+                            setTimeout(go, interval);
+                        } else {
+                            animated = false;
+                            list.style.left = newleft + 'px';
+                            if (newleft > -600) {
+                                list.style.left = -3000 + 'px';
+                            }
+                            if (newleft < -3000) {
+                                list.style.left = -600 + 'px';
+                            }
+                        }
+                    }
+                    go();
+                }
+                function play() {
+                    timer = setInterval(function () {
+                        next.onclick();
+                    }, 3000);
+                }
+                function stop() {
+                    clearInterval(timer);
+                }
+                next.onclick = function () {
+                    if (index == 5) {
+                        index = 1;
+                    } else {
+                        index += 1;
+                    }
+                    showButton();
+                    if (animated == false) {
+                        animate(-600);
+                    }
+                }
+                pre.onclick = function () {
+                    if (index == 1) {
+                        index = 5;
+                    } else {
+                        index -= 1;
+                    }
+                    showButton();
+                    if (animated == false) {
+                        animate(600);
+                    }
+                }
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].onclick = function () {
+                        if (this.className == 'on') {
+                            return;
+                        }
+                        var myIndex = parseInt(this.getAttribute('index'));
+                        var offset = -600 * (myIndex - index);
+                        index = myIndex;
+                        showButton();
+                        if (animated == false) {
+                            animate(offset);
+                        }
+                    }
+                }
+                container.onmouseover = stop;
+                container.onmouseout = play;
+                play();
+            }
+            function tiaozhuan(para) {
+                switch (para) {
+                    case 1:
+                        parent.location.href = "look_news.php?id=10";
+                        break;
+                    case 2:
+                        parent.location.href = "look_news.php?id=7";
+                        break;
+                    case 3:
+                        parent.location.href = "look_news.php?id=20";
+                        break;
+                    case 4:
+                        parent.location.href = "look_news.php?id=14";
+                        break;
+                    case 5:
+                        parent.location.href = "look_news.php?id=9";
+                        break;
+
+                }
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,28 @@
+可视页面-------------------------
+导航栏页 	menu.php √
+登录页   	index.php √
+首页		home.php √
+新闻列表页	news.php √
+通知列表页	Notice.php √
+新闻浏览页  	look_news.php √
+课程列表页	course.php √
+题库列表页	tizu.php √
+课程学习页 	study.php  √
+练题页 		Exercise.php √
+错题收藏页 	look_qs.php   √
+论坛页		forum.php √
+论坛楼层页	floor.php √
+个人主页		mypage.php √
+管理主页		manage.php √
+章节编辑页	ch_edit.php √
+问题编辑页	qs_edit.php√
+不可视页面----------------------------
+修改密码处理页   changepassword.php √
+连接处理页	lianjie.php √
+登录处理页	login,php √
+
+额外内容--------------------------------
+新闻轮播页	新闻轮播.html √
+网站指南		网站指南.php √
+通知轮播页	lunbo.html
+

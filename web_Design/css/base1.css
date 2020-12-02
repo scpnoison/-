@@ -1,0 +1,12 @@
+@charset "utf-8";
+/*css初始值*/
+body,div,span,a,ul,li,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form,input,button,textarea,p,header,nav,select,option,ol,img{font-family: "黑体";}
+.w-all{ width:100%;min-width: 1100px;height: 50px;solid: #F00;border-collapse:separate;border-spacing: 0}
+.mytd{z-index:9999;text-align: center;width:16.6%;background-color:rgba(53,139,242,1);border-radius:48px 48px 48px 48px;}
+.sy{text-decoration:none;color:black;background-color:rgba(175,244,177,0.8);border-top-left-radius: 20px;border-bottom-left-radius: 20px}
+.noDecor{text-decoration:none;color:black;background-color:rgba(175,244,177,0.8);}
+.qz{text-decoration: none;background-color:rgba(175,244,177,0.8)}
+.zn{text-decoration: none;background-color:rgba(175,244,177,0.8);border-top-right-radius: 20px;border-bottom-right-radius: 20px}
+.noShow{visibility: hidden;position: absolute;width:16%;text-align:center;text-decoration: none;}
+a{text-decoration:none;color:blue}
+
